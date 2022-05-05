@@ -1,5 +1,4 @@
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.Scanner;
 
 /**
@@ -115,7 +114,6 @@ public class MovieApp {
 	 * @param category  Category to be printed
 	 */
 	public static void printCategory(ArrayList<Movie> movies, String category) {
-		Collections.sort(movies);
 		for(Movie movie : movies) {
 			if(movie.getCategory().equals(category)) {
 				System.out.println(movie.getTitle());
