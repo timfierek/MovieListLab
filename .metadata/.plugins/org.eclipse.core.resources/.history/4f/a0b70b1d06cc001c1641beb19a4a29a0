@@ -1,0 +1,58 @@
+import java.util.ArrayList;
+import java.util.Scanner;
+
+/**
+ * 
+ * @author Tim Fierek
+ *
+ */
+public class MovieApp {
+
+	private static Scanner scnr;
+	
+	public static void main(String[] args) {
+		scnr = new Scanner(System.in);
+		ArrayList<Movie> movies = new ArrayList<>();
+		movies.add(new Movie("Back to the Future", "scifi"));
+		movies.add(new Movie("Space Balls", "scifi"));
+		movies.add(new Movie("Up", "animated"));
+		movies.add(new Movie("Horton Hears a Who", "animated"));
+		movies.add(new Movie("Scary Movie 4", "horror"));
+		movies.add(new Movie("Saw", "horror"));
+		movies.add(new Movie("King Richard", "drama"));
+		movies.add(new Movie("House of Gucci", "drama"));
+		movies.add(new Movie("Cloudy with a Chance of Meatballs", "animated"));
+		movies.add(new Movie("Star Wars", "scifi"));
+		
+		
+		System.out.println("Welcome to the Movie List Application!\n");
+		String category = promptInput(movies.size());
+		printCategory(movies, category);
+		
+	}
+	
+	public static String promptInput(int numMovies) {
+		String input = "";
+		System.out.println("\nThere are " + numMovies + " in this list.");
+		System.out.print("What category are you interested in? ");
+		
+		while(!input.equals("animated") && !input.equals("drama") && !input.equals("horror") && !input.equals("scifi")) {
+			try {
+				input = scnr.nextLine().toLowerCase().trim();
+			} catch(Exception e) {
+				System.out.print("Invalid input, please enter \"animated\", \"drama\", \"horror\", or \"scifi\": ");
+			}
+		}
+		
+		return input;
+	}
+	
+	public static void printCategory(ArrayList<Movie> movies, String category) {
+		for(Movie movie : movies) {
+			if(movie.getCategory().equals(category)) {
+				System.out.println(movie.getTitle());
+			}
+		}
+	}
+
+}
